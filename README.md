@@ -1,20 +1,9 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="editormd/editormd.min.js"></script>
-<link rel="stylesheet" href="editormd/css/editormd.css" />
-
 ###**Tabla de contenido**
-
-
 [TOCM]
-
 [TOC]
-
-
-
-
 #Descripcción
-Este es un proyecto de examen practico realizado por mi Luis Eduardo Lopez Najera para la empresa Gapsi.
 
+Este es un proyecto de examen practico realizado por mi Luis Eduardo Lopez Najera para la empresa Gapsi.
 El proyecto esta echo en 2 partes una parte front y una parte back.
 
 ##Tecnologias
@@ -22,10 +11,6 @@ Springboot 3.0.2.
 Java 17.
 Angular : 16.0.6
 Node: 18.16.0
-
-##Ejemplo
-
-
 
 #Back
 Primer debemos clonar el proyecto con el comando `git clone`.
