@@ -1,18 +1,19 @@
-###**Tabla de contenido**
+### **Tabla de contenido**
 [TOCM]
 [TOC]
-#Descripcción
+
+# Descripcción
 
 Este es un proyecto de examen practico realizado por mi Luis Eduardo Lopez Najera para la empresa Gapsi.
 El proyecto esta echo en 2 partes una parte front y una parte back.
 
-##Tecnologias
-Springboot 3.0.2.
-Java 17.
-Angular : 16.0.6
-Node: 18.16.0
+## Tecnologias
+- Springboot 3.0.2.
+- Java 17.
+- Angular : 16.0.6
+- Node: 18.16.0
 
-#Back
+# Back
 Primer debemos clonar el proyecto con el comando `git clone`.
 
 Para utilizar el back utilice el IDE STS disponible aqui : 
@@ -25,13 +26,13 @@ File -> Import -> Maven -> Existing Maven Pojects , buscamos la ruta en donde te
 
 3. Ya el ultimo paso para echar correr nuestro proyecto daremos click derecho y ejecutaremos la opcion Run As - > Spring boot App ya con esto nuestro proyecto estara disponible en el servidor 8080.
 
-##Documentacion
+## Documentacion
 
 Para poder ver la documentacion de las apis primero tenemos que tener nuestro proyecto back corriendo y posteriormente ingresar a esta liga.
 
 `<Documentacion>` : <http://localhost:8080/swagger-ui/index.html>
 
-#Front
+# Front
 Para programar el front utilizce el IDE VSC disponible aqui: 
 `<Visual Studio Code>` : <https://code.visualstudio.com/>
 
