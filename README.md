@@ -1,7 +1,3 @@
-### **Tabla de contenido**
-[TOCM]
-[TOC]
-
 # Descripcción
 
 Este es un proyecto de examen practico realizado por mi Luis Eduardo Lopez Najera para la empresa Gapsi.
