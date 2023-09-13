@@ -1,0 +1,176 @@
+<div class="m-5">
+    <div class="container">
+
+
+        <div *ngIf="error" class="mt-2 alert alert-danger d-flex align-items-center" role="alert">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div text-center>
+                &nbsp;{{msj}}
+            </div>
+        </div>
+
+        <div *ngIf="succes" class="mt-2 alert alert-success d-flex align-items-center" role="alert">
+            <i class="fa-solid fa-circle-check"></i>
+            <div text-center>
+                &nbsp;{{msj}}
+            </div>
+        </div>
+
+
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+
+
+                    <div class="col-sm-3 text-center">
+                        <img src="assets/imagenes/boxes.png" alt="boxes" width="128" height="128">
+                    </div>
+
+                    <div class="col-sm-5 text-center">
+                        <h2><b>Administraci&oacute;n de provedores</b></h2>
+                    </div>
+
+
+
+                    <div class="col-sm-4 text-center">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#addProvedorModal" (click)="saveProvedorModal()">
+                            <i class="fa-solid fa-plus"></i> Agregar Provedor
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-striped table-hover mt-5 ml-1 mr-1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Razon Social</th>
+                        <th>Direcci&oacute;n</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr
+                        *ngFor="let provedor of provedores| paginate: { itemsPerPage: 10, currentPage: page, totalItems: total }">
+                        <td>{{provedor.nombre}}</td>
+                        <td>{{provedor.razonSocial}}</td>
+                        <td>{{provedor.direccion}}</td>
+                        <td>
+                      
+                            <div class="row mx-auto">
+
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteProvedorModal"
+                                        (click)="deleteprovedorModal(provedor)">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Modal-->
+    <div class="modal fade" id="addProvedorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Provedor</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form [formGroup]="provedorForm" (submit)="saveProvedor()">
+                    <div class="modal-body">
+
+
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <label for="form-title" class="form-label">Nombre del provedor</label>
+                                <input id="form-title" type="text" class="form-control" formControlName="nombre"
+                                    [ngClass]="{ 'is-invalid':provedorForm.controls['nombre'].errors && provedorForm.controls['nombre'].touched }">
+
+                                <div *ngIf="provedorForm.controls['nombre'].errors" class="invalid-feedback">
+                                    <div *ngIf="provedorForm.controls['nombre'].errors['required']">El nombre del provedor es requerido</div>
+                                    <div *ngIf="provedorForm.controls['nombre'].errors['minlength']">El campo debe de tener m&iacute;nimo 5 caracteres</div>
+                                    <div *ngIf="provedorForm.controls['nombre'].errors['maxlength']">El campo debe de tener m&aacute;ximo 20 caracteres</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <label for="form-title" class="form-label">Razon Social</label>
+                                <input id="form-title" type="text" class="form-control" formControlName="razonSocial"
+                                    [ngClass]="{ 'is-invalid':provedorForm.controls['razonSocial'].errors && provedorForm.controls['razonSocial'].touched }">
+
+                                <div *ngIf="provedorForm.controls['razonSocial'].errors" class="invalid-feedback">
+                                    <div *ngIf="provedorForm.controls['razonSocial'].errors['required']">La razon social del provedor es requerido</div>
+                                    <div *ngIf="provedorForm.controls['razonSocial'].errors['minlength']">El campo debe de tener m&iacute;nimo 5 caracteres</div>
+                                    <div *ngIf="provedorForm.controls['razonSocial'].errors['maxlength']">El campo debe de tener m&aacute;ximo 20 caracteres</div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="form-title" class="form-label">Descripcci&oacute;n</label>
+                                <input id="form-title" type="text" class="form-control" formControlName="descripccion"
+                                    [ngClass]="{ 'is-invalid':provedorForm.controls['descripccion'].errors && provedorForm.controls['descripccion'].touched }">
+
+                                <div *ngIf="provedorForm.controls['descripccion'].errors" class="invalid-feedback">
+                                    <div *ngIf="provedorForm.controls['descripccion'].errors['required']">La razon social del provedor es requerido</div>
+                                    <div *ngIf="provedorForm.controls['descripccion'].errors['minlength']">El campo debe de tener m&iacute;nimo 5 caracteres</div>
+                                    <div *ngIf="provedorForm.controls['descripccion'].errors['maxlength']">El campo debe de tener m&aacute;ximo 20 caracteres</div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                            [disabled]="provedorForm.invalid">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Modal-->
+
+    <div class="modal fade" id="deleteProvedorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Provedor</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Est&aacute; seguro de borrar el provedor seleccionada?
+                </div>
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="deleteProvedor()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+
+
+</div>
